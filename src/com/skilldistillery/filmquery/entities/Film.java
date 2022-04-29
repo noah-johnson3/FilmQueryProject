@@ -4,38 +4,20 @@ import java.util.List;
 import java.util.Objects;
 
 public class Film {
-	private int filmId;
+	private int id;
 	private String title;
 	private String description;
-	private short releaseYear;
-	private int langId;
-	private int rentDuration;
-	private double rate;
-	private int length;
+	private Integer releaseYear;
+	private int languageId;
+	private int rentalDuration;
+	private double rentalRate;
+	private Integer length;
+	private Double replacementCost;
+	private String rating;
+	private String specialFeatures;
+	private String language;
 	private List<Actor> castList;
 
-	public int getFilmId() {
-		return filmId;
-	}
-
-	public void setFilmId(int filmId) {
-		this.filmId = filmId;
-	}
-
-	public String getTitle() {
-		return title;
-	}
-
-	@Override
-	public String toString() {
-		return "Film [filmId=" + filmId + ", title=" + title + ", description=" + description + ", releaseYear="
-				+ releaseYear + ", langId=" + langId + ", rentDuration=" + rentDuration + ", rate=" + rate + ", length="
-				+ length + ", getFilmId()=" + getFilmId() + ", getTitle()=" + getTitle() + ", getDescription()="
-				+ getDescription() + ", getReleaseYear()=" + getReleaseYear() + ", getLangId()=" + getLangId()
-				+ ", getRentDuration()=" + getRentDuration() + ", getRate()=" + getRate() + ", getLength()="
-				+ getLength() + ", getClass()=" + getClass() + ", hashCode()=" + hashCode() + ", toString()="
-				+ super.toString() + "]";
-	}
 //	public String toString() {
 //		String output = "";
 //		for (Actor actor : castList) {
@@ -46,6 +28,59 @@ public class Film {
 //		return output;
 //	}
 
+	public Film() {
+	}
+
+//	public Film(int id, String title, String description, Integer releaseYear, int languageId, int rentalDuration,
+//			double rentalRate, Integer length, Double replacementCost, String rating, String specialFeatures) {
+//		super();
+//		this.id = id;
+//		this.title = title;
+//		this.description = description;
+//		this.releaseYear = releaseYear;
+//		this.languageId = languageId;
+//		this.rentalDuration = rentalDuration;
+//		this.rentalRate = rentalRate;
+//		this.length = length;
+//		this.replacementCost = replacementCost;
+//		this.rating = rating;
+//		this.specialFeatures = specialFeatures;
+//	}
+	public Film(int filmId2, String title2, String desc, Integer releaseYear, int langId, int rentDur, Double rate,
+			int length, double repCost, String rating, String features) {
+		this.id = filmId2;
+		this.title = title2;
+		this.description = desc;
+		this.releaseYear = releaseYear;
+		this.languageId = langId;
+		this.rentalDuration = rentDur;
+		this.rentalRate = rate;
+		this.length = length;
+		this.replacementCost = repCost;
+		this.rating = rating;
+		this.specialFeatures = features;
+	}
+
+	@Override
+	public String toString() {
+		return "Film [id=" + id + ", title=" + title + ", description=" + description + ", releaseYear=" + releaseYear
+				+ ", languageId=" + languageId + ", rentalDuration=" + rentalDuration + ", rentalRate=" + rentalRate
+				+ ", length=" + length + ", replacementCost=" + replacementCost + ", rating=" + rating
+				+ ", specialFeatures=" + specialFeatures + ", language=" + language + "]";
+	}
+
+	public int getId() {
+		return id;
+	}
+
+	public void setId(int id) {
+		this.id = id;
+	}
+
+	public String getTitle() {
+		return title;
+	}
+
 	public void setTitle(String title) {
 		this.title = title;
 	}
@@ -54,80 +89,88 @@ public class Film {
 		return description;
 	}
 
-	@Override
-	public int hashCode() {
-		return Objects.hash(description, filmId, langId, length, rate, releaseYear, rentDuration, title);
-	}
-
-	@Override
-	public boolean equals(Object obj) {
-		if (this == obj)
-			return true;
-		if (obj == null)
-			return false;
-		if (getClass() != obj.getClass())
-			return false;
-		Film other = (Film) obj;
-		return Objects.equals(description, other.description) && filmId == other.filmId && langId == other.langId
-				&& length == other.length && Double.doubleToLongBits(rate) == Double.doubleToLongBits(other.rate)
-				&& releaseYear == other.releaseYear && rentDuration == other.rentDuration
-				&& Objects.equals(title, other.title);
-	}
-
 	public void setDescription(String description) {
 		this.description = description;
 	}
 
-	public short getReleaseYear() {
+	public Integer getReleaseYear() {
 		return releaseYear;
 	}
 
-	public void setReleaseYear(short releaseYear) {
+	public void setReleaseYear(Integer releaseYear) {
 		this.releaseYear = releaseYear;
 	}
 
-	public int getLangId() {
-		return langId;
+	public int getLanguageId() {
+		return languageId;
 	}
 
-	public void setLangId(int langId) {
-		this.langId = langId;
+	public void setLanguageId(int languageId) {
+		this.languageId = languageId;
 	}
 
-	public int getRentDuration() {
-		return rentDuration;
+	public int getRentalDuration() {
+		return rentalDuration;
 	}
 
-	public void setRentDuration(int rentDuration) {
-		this.rentDuration = rentDuration;
+	public void setRentalDuration(int rentalDuration) {
+		this.rentalDuration = rentalDuration;
 	}
 
-	public double getRate() {
-		return rate;
+	public double getRentalRate() {
+		return rentalRate;
 	}
 
-	public void setRate(double rate) {
-		this.rate = rate;
+	public void setRentalRate(double rentalRate) {
+		this.rentalRate = rentalRate;
 	}
 
-	public int getLength() {
+	public Integer getLength() {
 		return length;
 	}
 
-	public void setLength(int length) {
+	public void setLength(Integer length) {
 		this.length = length;
 	}
 
-	public Film() {
+	public Double getReplacementCost() {
+		return replacementCost;
 	}
 
-	public Film(int filmId2, String title2, String desc, short releaseYear, int langId, int rentDur, double rate,
-			int length, double repCost, String rating, String features, List<Actor> castList) {
-		// TODO Auto-generated constructor stub
+	public void setReplacementCost(Double replacementCost) {
+		this.replacementCost = replacementCost;
 	}
-	public Film(int filmId2, String title2, String desc, short releaseYear, int langId, int rentDur, double rate,
-			int length, double repCost, String rating, String features) {
-		// TODO Auto-generated constructor stub
+
+	public String getRating() {
+		return rating;
+	}
+
+	public void setRating(String rating) {
+		this.rating = rating;
+	}
+
+	public String getSpecialFeatures() {
+		return specialFeatures;
+	}
+
+	public void setSpecialFeatures(String specialFeatures) {
+		this.specialFeatures = specialFeatures;
+	}
+
+	public String getLanguage() {
+		return language;
+	}
+
+	public void setLanguage(String language) {
+		this.language = language;
+	}
+
+	public List<Actor> getCastList() {
+		return castList;
+	}
+
+	public void setCastList(List<Actor> castList) {
+		this.castList = castList;
 	}
 
 }
