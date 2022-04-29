@@ -66,7 +66,7 @@ public class Film {
 		return "Film [id=" + id + ", title=" + title + ", description=" + description + ", releaseYear=" + releaseYear
 				+ ", languageId=" + languageId + ", rentalDuration=" + rentalDuration + ", rentalRate=" + rentalRate
 				+ ", length=" + length + ", replacementCost=" + replacementCost + ", rating=" + rating
-				+ ", specialFeatures=" + specialFeatures + ", language=" + language + "]";
+				+ ", specialFeatures=" + specialFeatures + ", language=" + language + "\n" + "]";
 	}
 
 	public int getId() {
