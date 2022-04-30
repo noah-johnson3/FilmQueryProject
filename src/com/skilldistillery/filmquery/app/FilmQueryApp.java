@@ -90,7 +90,7 @@ public class FilmQueryApp {
 			System.out.println("Please enter quit to quit" + "\n"
 					+ "Please enter a keyword to run through the database of films.");
 			String userChoice = input.nextLine();
-			db.keyWordFilmList(userChoice);
+			System.out.println(db.keyWordFilmList(userChoice));
 		}
 
 	}
@@ -117,4 +117,3 @@ public class FilmQueryApp {
 		}
 	}
 }
-
