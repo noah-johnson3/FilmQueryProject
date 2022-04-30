@@ -14,14 +14,13 @@ import com.skilldistillery.filmquery.entities.Film;
 public class DatabaseAccessorObject implements DatabaseAccessor {
 	private static final String URL = "jdbc:mysql://localhost:3306/sdvid?useSSL=false&useLegacyDatetimeCode=false&serverTimezone=US/Mountain";
 
-
 	public Film findFilmById(int filmId) {
 		String user = "student";
 		String pass = "student";
 		Film film = null;
 		try {
 			Connection conn = DriverManager.getConnection(URL, user, pass);
-			String sql = "SELECT * FROM film WHERE id = ?";
+			String sql = "SELECT * FROM film JOIN language ON film.language_id = language.id WHERE film.id = ?";
 			PreparedStatement stmt = conn.prepareStatement(sql);
 			stmt.setInt(1, filmId);
 			ResultSet rs = stmt.executeQuery();
@@ -37,9 +36,9 @@ public class DatabaseAccessorObject implements DatabaseAccessor {
 				double repCost = rs.getDouble("replacement_cost");
 				String rating = rs.getString("rating");
 				String features = rs.getString("special_features");
-//				List<Actor> castList = findActorsByFilmId(filmId);
+				String language = rs.getString("name");
 				film = new Film(filmId, title, desc, releaseYear, langId, rentDur, rate, length, repCost, rating,
-						features);
+						features, language);
 
 			}
 			rs.close();
@@ -103,8 +102,9 @@ public class DatabaseAccessorObject implements DatabaseAccessor {
 		}
 		return actorsList;
 	}
-	public List<Film> keyWordFilmList(String searchWord){
-		
+
+	public List<Film> keyWordFilmList(String searchWord) {
+
 		String user = "student";
 		String pass = "student";
 		List<Film> filmList = new ArrayList<>();
@@ -115,7 +115,7 @@ public class DatabaseAccessorObject implements DatabaseAccessor {
 			prepStatment.setString(1, "%" + searchWord + "%");
 			prepStatment.setString(2, "%" + searchWord + "%");
 			ResultSet rs = prepStatment.executeQuery();
-			while(rs.next()) {
+			while (rs.next()) {
 				int filmId = rs.getInt("id");
 				String title = rs.getString("title");
 				String desc = rs.getString("description");
@@ -127,11 +127,12 @@ public class DatabaseAccessorObject implements DatabaseAccessor {
 				double repCost = rs.getDouble("replacement_cost");
 				String rating = rs.getString("rating");
 				String features = rs.getString("special_features");
+				String language = rs.getString("name");
 				Film film = new Film(filmId, title, desc, releaseYear, langId, rentDur, rate, length, repCost, rating,
-						features);
+						features, language);
 				filmList.add(film);
 			}
-		} catch(SQLException e) {
+		} catch (SQLException e) {
 			e.printStackTrace();
 		}
 		return filmList;

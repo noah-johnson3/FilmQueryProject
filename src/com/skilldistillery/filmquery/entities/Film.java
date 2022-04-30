@@ -18,22 +18,11 @@ public class Film {
 	private String language;
 	private List<Actor> castList;
 
-//	public String toString() {
-//		String output = "";
-//		for (Actor actor : castList) {
-//
-//			output += "The actor " + actor.getFirstName() + " " + actor.getLastName() + " were in the following films: "
-//					+ title + "\n";
-//		}
-//		return output;
-//	}
-
 	public Film() {
 	}
 
 	public Film(int filmId2, String title2, String desc, Integer releaseYear, int langId, int rentDur, Double rate,
-			int length, double repCost, String rating, String features) {
-		this.id = filmId2;
+			int length, double repCost, String rating, String features, String language) {
 		this.title = title2;
 		this.description = desc;
 		this.releaseYear = releaseYear;
@@ -44,12 +33,14 @@ public class Film {
 		this.replacementCost = repCost;
 		this.rating = rating;
 		this.specialFeatures = features;
+		this.language = language;
 	}
 
 	@Override
 	// MOVIE TITLE, YEAR, RATING, DESCRIPTION, LANGUAGE
 	public String toString() {
-		return "\nMovie title: " +title + "|| year of movie: "+ releaseYear + "|| movie rating: " + rating + "\n" +"-----description of movie:" +description + "\n";
+		return "\nMovie title: " + title + "|| year of movie: " + releaseYear + "|| movie rating: " + rating + " language: "+ language +"\n"
+				+ "-----description of movie:" + description + "\n" ;
 	}
 
 	public int getId() {
