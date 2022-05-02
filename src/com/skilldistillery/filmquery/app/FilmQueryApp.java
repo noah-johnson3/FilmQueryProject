@@ -15,7 +15,6 @@ public class FilmQueryApp {
 
 	public static void main(String[] args) {
 		FilmQueryApp app = new FilmQueryApp();
-//		app.test();
 		app.launch();
 	}
 
@@ -29,8 +28,9 @@ public class FilmQueryApp {
 	}
 
 	private void launch() {
-		
-		startUserInterface();
+
+//		startUserInterface();
+		userMenu();
 		input.close();
 	}
 
@@ -38,25 +38,49 @@ public class FilmQueryApp {
 		int userChoice = 0;
 		do {
 			userMenu();
-			userChoice = input.nextInt();
-			input.nextLine();
-			menuSwitch(userChoice);
-		}while(userChoice != 3);
-		
+//			userChoice = input.nextInt();
+//			input.nextLine();
+//			menuSwitch(userChoice);
+
+		} while (userChoice != 3);
+
 		startUserInterface();
 
-		
 	}
 
 	private void userMenu() {
 
+		boolean keepGoing = true;
 		System.out.println("Hello! Welcome to my first SQL Project Please selct from the following menu");
 		System.out.println("*******************************************");
 		System.out.println("* 1. Look up Film by ID                   *");
 		System.out.println("* 2. Look up a film by a search keyword   *");
 		System.out.println("* 3. Exit Application                     *");
 		System.out.println("*******************************************");
+		int userChoice = input.nextInt();
+		input.nextLine();
 
+		while (keepGoing) {
+			switch (userChoice) {
+			case 1:
+				subMenuFilmId();
+				keepGoing = true;
+				break;
+			case 2:
+				subMenuKeyWord();
+				System.out.println("Going back to main menu please hold");
+				System.out.println("...");
+				System.out.println("...");
+				System.out.println("...");
+				userChoice = 0;
+				break;
+			case 3:
+				System.out.println("Goodbye!");
+				keepGoing = false;
+				break;
+			}
+
+		}
 	}
 
 	private void subMenuFilmId() {
@@ -65,9 +89,14 @@ public class FilmQueryApp {
 		while (keepGoing) {
 			System.out.println("Please enter the films ID: ");
 			int userChoice = input.nextInt();
-			input.nextLine();
-			if (db.findFilmById(userChoice) == null) {
+//			input.nextLine();
+			if (userChoice == 0) {
+				userMenu();
+				keepGoing = false;
+				break;
+			} else if (db.findFilmById(userChoice) == null) {
 				System.out.println("Invalid selection try again");
+				continue;
 			} else {
 				Film film = db.findFilmById(userChoice);
 				List<Actor> actorList = db.findActorsByFilmId(userChoice);
@@ -75,9 +104,7 @@ public class FilmQueryApp {
 				for (Actor actor : actorList) {
 					System.out.println(actor);
 				}
-			}
-			if (userChoice == 0) {
-				keepGoing = false;
+				continue;
 			}
 		}
 	}
@@ -85,35 +112,52 @@ public class FilmQueryApp {
 	private void subMenuKeyWord() {
 
 		boolean keepGoing = true;
-		while (true) {
+		while (keepGoing) {
 
-			System.out.println("Please enter quit to quit" + "\n"
-					+ "Please enter a keyword to run through the database of films.");
+			System.out.println(
+					"Please enter 0 to quit" + "\n" + "Please enter a keyword to run through the database of films.");
 			String userChoice = input.nextLine();
 			System.out.println(db.keyWordFilmList(userChoice));
+			int userQuit = input.nextInt();
+			input.nextLine();
+			if (userQuit == 0) {
+				keepGoing = false;
+			}
 		}
 
 	}
-	private void menuSwitch(int userSelection) {
-		boolean keepGoing = true;
-		while (keepGoing) {
-			switch (userSelection) {
-			case 1:
-				subMenuFilmId();
-				keepGoing = false;
-				break;
-			case 2:
-				subMenuKeyWord();
-			case 3:
-				System.out.println("Goodbye!");
-				keepGoing = false;
-			default:
-				System.out.println("Invalid selection please try again");
-				userSelection = input.nextInt();
-				input.nextLine();
-				break;
-			}
 
-		}
+	private void menuSwitch(int userSelection) {
 	}
 }
+//		boolean keepGoing = true;
+//		
+//		while (keepGoing) {
+//			switch (userSelection) {
+//			case 1:
+//				subMenuFilmId();
+//				keepGoing = false;
+//				userChoice = 0;
+//				break;
+//			case 2:
+//				subMenuKeyWord();
+//				System.out.println("Going back to main menu please hold");
+//				System.out.println("...");
+//				System.out.println("...");
+//				System.out.println("...");
+//				userChoice = 0;
+//				userMenu();
+//				break;
+//			case 3:
+//				System.out.println("Goodbye!");
+//				keepGoing = false;
+//				break;
+//			default:
+//				System.out.println("Invalid selection please try again");
+//				userSelection = input.nextInt();
+//				input.nextLine();
+//				break;
+//			}
+//
+//		}
+//	}
