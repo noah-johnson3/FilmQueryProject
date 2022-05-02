@@ -20,7 +20,8 @@ public class DatabaseAccessorObject implements DatabaseAccessor {
 		Film film = null;
 		try {
 			Connection conn = DriverManager.getConnection(URL, user, pass);
-			String sql = "SELECT * FROM film JOIN language ON film.language_id = language.id WHERE film.id = ?";
+//			String sql = "SELECT * FROM film JOIN language ON film.language_id = language.id WHERE film.id = ?";
+			String sql = "SELECT film.title, film.description, film.id, film.release_year, film.language_id, film.rating FROM film JOIN language ON film.language_id = language.id WHERE film.id =?";
 			PreparedStatement stmt = conn.prepareStatement(sql);
 			stmt.setInt(1, filmId);
 			ResultSet rs = stmt.executeQuery();
@@ -30,7 +31,8 @@ public class DatabaseAccessorObject implements DatabaseAccessor {
 				film.setDescription(rs.getString("description"));
 				film.setReleaseYear(rs.getInt("release_year"));
 				film.setRating(rs.getString("rating"));
-				film.setLanguage(rs.getString("language_id"));
+				film.setLanguageId(rs.getInt("language_id"));
+				film.setLanguage(languageAsString(rs.getInt(3)));
 
 			}
 			rs.close();

@@ -13,13 +13,13 @@
 
 
 
-<img src="2ndpic.png" width="500" height="200"/> <br>
+<img src="2ndpic.png" width="500" height="200"/> <br><br><br>
 * How to navigate through a database <br>
 * How to take database information and manipulate it through Java <br>
 * How to run a server through AWS <br>
 * Further refining my skills of OOP (Object Oriented Programming) <br>
 * Basic mark down for README <br>
-* Implementing banners and photos inside of README <br>
+* Implementing banners and photos inside of README <br><br><br><br><br>
 
 
 
