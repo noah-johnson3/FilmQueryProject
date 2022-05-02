@@ -1,5 +1,5 @@
 
-<img src="readmeimage.png" width="1200" height="600"/>
+<img src="readmeimage.png" width="800" height="400"/>
 
 
 ### Technologies Used
@@ -8,8 +8,8 @@
 [Object Oriented Programming](https://docs.oracle.com/javase/tutorial/java/concepts/) <br>
 [Eclipse](https://www.eclipse.org/) <br>
 [SQL](https://dev.mysql.com/doc/)<br>
-[AWS](https://aws.amazon.com/)
-[Interfaces](https://www.baeldung.com/java-interfaces#:~:text=In%20Java%2C%20an%20interface%20is,abstraction%2C%20polymorphism%20and%20multiple%20inheritances.&text=We%20can%20implement%20an%20interface,by%20using%20the%20implements%20keyword.)
+[AWS](https://aws.amazon.com/)<br>
+[Interfaces](https://www.baeldung.com/java-interfaces#:~:text=In%20Java%2C%20an%20interface%20is,abstraction%2C%20polymorphism%20and%20multiple%20inheritances.&text=We%20can%20implement%20an%20interface,by%20using%20the%20implements%20keyword.)<br>
 
 
 
