@@ -1,2 +1,35 @@
-# FilmQueryProject
-## TO DO
+
+<img src="readmeimage.png" width="1200" height="600"/>
+
+
+### Technologies Used
+
+[Java](https://www.oracle.com/java/technologies/) <br>
+[Object Oriented Programming](https://docs.oracle.com/javase/tutorial/java/concepts/) <br>
+[Eclipse](https://www.eclipse.org/) <br>
+[SQL](https://dev.mysql.com/doc/)<br>
+[AWS](https://aws.amazon.com/)
+[Interfaces](https://www.baeldung.com/java-interfaces#:~:text=In%20Java%2C%20an%20interface%20is,abstraction%2C%20polymorphism%20and%20multiple%20inheritances.&text=We%20can%20implement%20an%20interface,by%20using%20the%20implements%20keyword.)
+
+
+
+<img src="2ndpic.png" width="500" height="200"/> <br>
+* How to navigate through a database <br>
+* How to take database information and manipulate it through Java <br>
+* How to run a server through AWS <br>
+* Further refining my skills of OOP (Object Oriented Programming) <br>
+* Basic mark down for README <br>
+* Implementing banners and photos inside of README <br>
+
+
+### How to use my Film Query App
+When you start the program you will be greeted by a user menu as seen below. 
+	* First start by downloading the file an opening up with your IDE of choice and/or if you like doing terminal commands that works too!
+	* Simply select one of the 3 options in the user menu. 
+	* Carefully follow the instructions when trying to quit each sub menu. Press 0 to quit the first sub menu and goback as 1 word for the second menu. To quit the application Simply press 3.
+
+
+<img src="carbon.png" width="500" height="200" />
+
+Select one of the following options in the User Menu to display said information. This program is pulling information based off a fictional video store referred to as "sdvid". 
+

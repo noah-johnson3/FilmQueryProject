@@ -29,67 +29,48 @@ public class FilmQueryApp {
 
 	private void launch() {
 
-//		startUserInterface();
 		userMenu();
 		input.close();
 	}
 
-	private void startUserInterface() {
-		int userChoice = 0;
-		do {
-			userMenu();
-//			userChoice = input.nextInt();
-//			input.nextLine();
-//			menuSwitch(userChoice);
 
-		} while (userChoice != 3);
-
-		startUserInterface();
-
-	}
 
 	private void userMenu() {
 
 		boolean keepGoing = true;
-		System.out.println("Hello! Welcome to my first SQL Project Please selct from the following menu");
-		System.out.println("*******************************************");
-		System.out.println("* 1. Look up Film by ID                   *");
-		System.out.println("* 2. Look up a film by a search keyword   *");
-		System.out.println("* 3. Exit Application                     *");
-		System.out.println("*******************************************");
-		int userChoice = input.nextInt();
-		input.nextLine();
 
 		while (keepGoing) {
+			System.out.println("Hello! Welcome to my first SQL Project Please selct from the following menu");
+			System.out.println("*******************************************");
+			System.out.println("* 1. Look up Film by ID                   *");
+			System.out.println("* 2. Look up a film by a search keyword   *");
+			System.out.println("* 3. Exit Application                     *");
+			System.out.println("*******************************************");
+			int userChoice = input.nextInt();
+			input.nextLine();
 			switch (userChoice) {
 			case 1:
-				subMenuFilmId();
-				keepGoing = true;
+				keepGoing = subMenuFilmId();
 				break;
 			case 2:
-				subMenuKeyWord();
-				System.out.println("Going back to main menu please hold");
-				System.out.println("...");
-				System.out.println("...");
-				System.out.println("...");
-				userChoice = 0;
+				keepGoing = subMenuKeyWord();
 				break;
 			case 3:
 				System.out.println("Goodbye!");
 				keepGoing = false;
+				System.exit(0);
 				break;
 			}
-
 		}
 	}
 
-	private void subMenuFilmId() {
+	private boolean subMenuFilmId() {
 		boolean keepGoing = true;
 		System.out.println("Enter 0 for the Films ID to exit");
 		while (keepGoing) {
 			System.out.println("Please enter the films ID: ");
 			int userChoice = input.nextInt();
-//			input.nextLine();
+			input.nextLine();
 			if (userChoice == 0) {
 				userMenu();
 				keepGoing = false;
@@ -107,57 +88,28 @@ public class FilmQueryApp {
 				continue;
 			}
 		}
+		return keepGoing;
 	}
 
-	private void subMenuKeyWord() {
+	private boolean subMenuKeyWord() {
 
 		boolean keepGoing = true;
+		System.out.println("Please enter goback to quit");
 		while (keepGoing) {
-
-			System.out.println(
-					"Please enter 0 to quit" + "\n" + "Please enter a keyword to run through the database of films.");
+			System.out.println("\n" + "Please enter a keyword to run through the database of films.");
 			String userChoice = input.nextLine();
-			System.out.println(db.keyWordFilmList(userChoice));
-			int userQuit = input.nextInt();
-			input.nextLine();
-			if (userQuit == 0) {
+
+			if (userChoice.equalsIgnoreCase("goback")) {
 				keepGoing = false;
+				continue;
+			} else {
+				System.out.println(db.keyWordFilmList(userChoice));
+				input.nextLine();
+
+				break;
 			}
+
 		}
-
-	}
-
-	private void menuSwitch(int userSelection) {
+		return keepGoing;
 	}
 }
-//		boolean keepGoing = true;
-//		
-//		while (keepGoing) {
-//			switch (userSelection) {
-//			case 1:
-//				subMenuFilmId();
-//				keepGoing = false;
-//				userChoice = 0;
-//				break;
-//			case 2:
-//				subMenuKeyWord();
-//				System.out.println("Going back to main menu please hold");
-//				System.out.println("...");
-//				System.out.println("...");
-//				System.out.println("...");
-//				userChoice = 0;
-//				userMenu();
-//				break;
-//			case 3:
-//				System.out.println("Goodbye!");
-//				keepGoing = false;
-//				break;
-//			default:
-//				System.out.println("Invalid selection please try again");
-//				userSelection = input.nextInt();
-//				input.nextLine();
-//				break;
-//			}
-//
-//		}
-//	}
